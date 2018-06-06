@@ -33,6 +33,9 @@ public class ElectrodomesticoManagedBean {
     private Date fech;
     private String marc;
     private ListaElectrodomestico listaElec;
+    private double precio;
+    private int stock;
+    
     /**
      * Creates a new instance of ElectrodomesticoManagedBean
      */
@@ -51,7 +54,7 @@ public class ElectrodomesticoManagedBean {
             if (controlarCodRepetidos(getCodigo(), getListaElectro()) == false) {
                 //SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
                 //setFechaA(formato.parse(getFecha()));
-                getListaElec().agregarElemento(new Electrodomestico(getCodigo(), getTipo(), getMarca(), getFech()));
+                getListaElec().agregarElemento(new Electrodomestico(getCodigo(), getTipo(), getMarca(), getFech(), getPrecio(), getStock()));
             }
         }
 
@@ -206,6 +209,34 @@ public class ElectrodomesticoManagedBean {
      */
     public void setListaElec(ListaElectrodomestico listaElec) {
         this.listaElec = listaElec;
+    }
+
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the stock
+     */
+    public int getStock() {
+        return stock;
+    }
+
+    /**
+     * @param stock the stock to set
+     */
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     
