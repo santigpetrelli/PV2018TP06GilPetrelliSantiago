@@ -18,18 +18,21 @@ public class Electrodomestico {
     private Date fecha;
     private double precio;
     private int stock;
+    private String disponible;
     
     public Electrodomestico() {
     }
 
-    public Electrodomestico(String codigo, String tipo, Marca marca, Date fecha, double precio, int stock) {
+    public Electrodomestico(String codigo, String tipo, Marca marca, Date fecha, double precio, int stock, String disponible) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.marca = marca;
         this.fecha = fecha;
         this.precio = precio;
         this.stock = stock;
+        this.disponible = disponible;
     }
+
 
     /**
      * @return the codigo
@@ -113,6 +116,20 @@ public class Electrodomestico {
      */
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    /**
+     * @return the disponible
+     */
+    public String getDisponible() {
+        return disponible;
+    }
+
+    /**
+     * @param disponible the disponible to set
+     */
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
     }
     
 }

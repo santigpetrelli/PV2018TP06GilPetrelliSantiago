@@ -41,22 +41,6 @@
                                  actionListener="#{electrodomesticoManagedBean.agregarElemento()}" 
                                  update="@form"/> 
                 </p:panelGrid>
-                <p:outputLabel/>
-                <h:panelGrid columns="2">
-                <p:outputLabel value="Elija marca a buscar"/>
-                <p:selectOneMenu value="#{electrodomesticoManagedBean.marc}" converter="omnifaces.SelectItemsConverter">
-                    <f:selectItem itemLabel="Seleccion de Marca" 
-                                  itemValue="#{null}"/>
-                    <f:selectItems value="#{electrodomesticoManagedBean.listaMarcas.listaMarcas}" 
-                                   var="b" 
-                                   itemLabel="#{b.nombreMarca}" 
-                                   itemValue="#{b.nombreMarca}"/> 
-                </p:selectOneMenu>
-                <p:outputLabel/>
-                <p:commandButton value="Buscar" 
-                                 actionListener="#{electrodomesticoManagedBean.buscarPorMarca()}" 
-                                 update="@form"/>
-                </h:panelGrid>
                 <p:dataTable id="tblMuestraDatos" 
                              var="cadaElectro" 
                              value="#{electrodomesticoManagedBean.listaElec.listaElectrodomestico}" 
@@ -76,36 +60,17 @@
                         </p:outputLabel>
                     </p:column>
                     <p:column headerText="Precio">
-                        <p:outputLabel value="#{cadaElectro.precio}"/>
-                    </p:column>
-                    <p:column headerText="Stock">
-                        <p:outputLabel value="#{cadaElectro.stock}"/>
-                    </p:column>
-                </p:dataTable>
-                <p:dataTable id="tblMuestraDatosB" 
-                             var="cadaElec" value="#{electrodomesticoManagedBean.listaElec.listaElectrodomestico}" 
-                             emptyMessage="No hay electrodomesticos encontrados">
-                    <p:column headerText="Codigo">
-                        <p:outputLabel value="#{cadaElec.codigo}"/>
-                    </p:column>
-                    <p:column headerText="Tipo">
-                        <p:outputLabel value="#{cadaElec.tipo}"/>
-                    </p:column>
-                    <p:column headerText="Marca">
-                        <p:outputLabel value="#{cadaElec.marca.nombreMarca}"/>
-                    </p:column>
-                    <p:column headerText="Fecha de Alta">
-                        <p:outputLabel value="#{cadaElec.fecha}">
-                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        <p:outputLabel value="#{cadaElectro.precio}">
+                            <f:convertNumber maxFractionDigits="2" type="currency" currencySymbol="$"/>
                         </p:outputLabel>
                     </p:column>
-                    <p:column headerText="Precio">
-                        <p:outputLabel value="#{cadaElectro.precio}"/>
-                    </p:column>
                     <p:column headerText="Stock">
                         <p:outputLabel value="#{cadaElectro.stock}"/>
                     </p:column>
-                </p:dataTable>
+                    <p:column headerText="Disponibilidad">
+                        <p:outputLabel value="#{cadaElectro.disponible}"/>
+                    </p:column>
+                </p:dataTable>  
         </h:form>
         </p:panel>
         </div>

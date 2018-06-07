@@ -35,6 +35,7 @@ public class ElectrodomesticoManagedBean {
     private ListaElectrodomestico listaElec;
     private double precio;
     private int stock;
+    private String disponible;
     
     /**
      * Creates a new instance of ElectrodomesticoManagedBean
@@ -49,39 +50,18 @@ public class ElectrodomesticoManagedBean {
     }
 
     public void agregarElemento() throws ParseException {
-        if (getCodigo() == " " || getTipo() == " ") {
-        } else {
-            if (controlarCodRepetidos(getCodigo(), getListaElectro()) == false) {
-                //SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
-                //setFechaA(formato.parse(getFecha()));
-                getListaElec().agregarElemento(new Electrodomestico(getCodigo(), getTipo(), getMarca(), getFech(), getPrecio(), getStock()));
-            }
+        if(getStock()>0){
+            setDisponible("Si");
         }
-
-    }
-    
-    public void buscarPorMarca(){
-        for(int i=0;i<getListaElectro().getListaElectrodomestico().size();i++){
-            if(getListaElectro().getListaElectrodomestico().get(i).getMarca().getNombreMarca().equals(getMarc())){
-                getListaElec().getListaElectrodomestico().add(getListaElectro().getListaElectrodomestico().get(i));
-            }
+        else{
+            setDisponible("No");
         }
-    }
-   
-
-    public boolean controlarCodRepetidos(String unaPalabra, ListaElectrodomestico unaLista) {
-        boolean control = false;
-        for (int i = 0; i < unaLista.getListaElectrodomestico().size(); i++) {
-            if (unaLista.getListaElectrodomestico().get(i).getCodigo().equals(unaPalabra)) {
-                control = true;
-                break;
-            }
-        }
-        return control;
+        //SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
+        //setFechaA(formato.parse(getFecha()));
+        getListaElec().agregarElemento(new Electrodomestico(getCodigo(), getTipo(), getMarca(), getFech(), getPrecio(), getStock(),getDisponible()));
     }
 
     public void reiniciarLista() {
-
         getListaElec().getListaElectrodomestico().clear();
     }
 
@@ -237,6 +217,20 @@ public class ElectrodomesticoManagedBean {
      */
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    /**
+     * @return the disponible
+     */
+    public String getDisponible() {
+        return disponible;
+    }
+
+    /**
+     * @param disponible the disponible to set
+     */
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
     }
 
     
